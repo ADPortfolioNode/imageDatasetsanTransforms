@@ -66,7 +66,24 @@ show_data(dataset[1])
 #Try to use the RandomVerticalFlip (vertically flip the image) with horizontally flip and convert to tensor as a compose. Apply the compose on image. 
 # Use show_data() to plot the second image (the image as 2).
 
-# Practice: Combine vertical flip, horizontal flip and convert to tensor as a compose. Apply the compose on image. Then plot the image
+# Practice: Combine vertical flip, horizontal flip and convert to tensor as a compose. 
+# Apply the compose on image. Then plot the image
 
-# Type your code here
+fliptensor_data_transform = transforms.Compose([transforms.RandomVerticalFlip(p = 1 ),
+transforms.RandomHorizontalFlip(p = 1),
+transforms.ToTensor()])
+dataset = dsets.MNIST(root = './data', download = True, transform = fliptensor_data_transform)
+show_data(dataset[1])
+
+print("my code ", dataset[1][0].shape)  
+print("my code image", dataset[1][1])  
+
+my_data_transform = transforms.Compose([transforms.RandomVerticalFlip(p = 1), transforms.RandomHorizontalFlip(p = 1), transforms.ToTensor()])
+dataset = dsets.MNIST(root = './data', train = False, download = True, transform = my_data_transform)
+show_data(dataset[1])
+
+print("their code", dataset[1][0].shape)
+print("their code image", dataset[1][1])
+
+print(">>>>>>>>>>>>>>>>end of line<<<<<<<<<<<<<<<<<<<<<")
     
